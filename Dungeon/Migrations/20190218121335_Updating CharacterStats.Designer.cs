@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Dungeon.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190218110523_identity migration")]
-    partial class identitymigration
+    [Migration("20190218121335_Updating CharacterStats")]
+    partial class UpdatingCharacterStats
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -70,6 +70,55 @@ namespace Dungeon.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("Dungeon.Models.Character", b =>
+                {
+                    b.Property<int>("CharacterId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CharacterStatsId");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<string>("UserId")
+                        .IsRequired();
+
+                    b.HasKey("CharacterId");
+
+                    b.HasIndex("CharacterStatsId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Characters");
+                });
+
+            modelBuilder.Entity("Dungeon.Models.CharacterStats", b =>
+                {
+                    b.Property<int>("CharacterStatsId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CharacterId");
+
+                    b.Property<int>("CurrentLevel");
+
+                    b.Property<int>("Energy");
+
+                    b.Property<int>("Experience");
+
+                    b.Property<int>("Health");
+
+                    b.Property<int>("Magic");
+
+                    b.Property<int>("Strength");
+
+                    b.HasKey("CharacterStatsId");
+
+                    b.ToTable("CharacterStatses");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -180,6 +229,19 @@ namespace Dungeon.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Dungeon.Models.Character", b =>
+                {
+                    b.HasOne("Dungeon.Models.CharacterStats", "CharacterStats")
+                        .WithMany()
+                        .HasForeignKey("CharacterStatsId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Dungeon.Data.Identity.AppUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

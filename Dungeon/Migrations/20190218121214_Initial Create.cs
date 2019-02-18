@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Dungeon.Migrations
 {
-    public partial class identitymigration : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -45,6 +45,25 @@ namespace Dungeon.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CharacterStatses",
+                columns: table => new
+                {
+                    CharacterStatsId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CharacterId = table.Column<int>(nullable: false),
+                    Level = table.Column<int>(nullable: false),
+                    Experience = table.Column<int>(nullable: false),
+                    Health = table.Column<int>(nullable: false),
+                    Energy = table.Column<int>(nullable: false),
+                    Strength = table.Column<int>(nullable: false),
+                    Magic = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CharacterStatses", x => x.CharacterStatsId);
                 });
 
             migrationBuilder.CreateTable(
@@ -153,6 +172,33 @@ namespace Dungeon.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Characters",
+                columns: table => new
+                {
+                    CharacterId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    UserId = table.Column<string>(nullable: false),
+                    CharacterStatsId = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(maxLength: 50, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Characters", x => x.CharacterId);
+                    table.ForeignKey(
+                        name: "FK_Characters_CharacterStatses_CharacterStatsId",
+                        column: x => x.CharacterStatsId,
+                        principalTable: "CharacterStatses",
+                        principalColumn: "CharacterStatsId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Characters_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -191,6 +237,16 @@ namespace Dungeon.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Characters_CharacterStatsId",
+                table: "Characters",
+                column: "CharacterStatsId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Characters_UserId",
+                table: "Characters",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -211,7 +267,13 @@ namespace Dungeon.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Characters");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
+
+            migrationBuilder.DropTable(
+                name: "CharacterStatses");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");

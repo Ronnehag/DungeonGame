@@ -1,4 +1,5 @@
 ﻿using Dungeon.Data.Identity;
+using Dungeon.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 namespace Dungeon.Controllers
@@ -14,9 +15,24 @@ namespace Dungeon.Controllers
             _signinManager = signinManager;
         }
 
+        // Register
+        public IActionResult RegisterAccount()
+        {
+            return null;
+        }
+
+        [HttpPost]
+        public IActionResult RegisterAccount(RegisterAccount model)
+        {
+            return null;
+        }
+
+
+
+
         // Login
         // Logout
-        // Register
+        
         // EditDetails
         // DeleteAccount
     }
