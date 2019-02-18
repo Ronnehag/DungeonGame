@@ -1,0 +1,20 @@
+﻿/* ============================================
+*  This CSS controls the input fields
+*  by displaying red text for validation errors 
+*  ============================================ */
+
+.field-validation-error, .validation-summary-errors {
+    color: $validationRed;
+}
+
+.field-valdation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid $validationRed;
+    background: $validationRedBorder;
+}
+.validation-summary-valid {
+    display: none;
+}

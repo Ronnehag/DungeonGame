@@ -51,6 +51,23 @@ li {
     background: #720000;
     color: #fff; }
 
+/* ============================================
+*  This CSS controls the input fields
+*  by displaying red text for validation errors 
+*  ============================================ */
+.field-validation-error, .validation-summary-errors {
+  color: #f00; }
+
+.field-valdation-valid {
+  display: none; }
+
+.input-validation-error {
+  border: 1px solid #f00;
+  background: #fee; }
+
+.validation-summary-valid {
+  display: none; }
+
 .nav-list .list-group-item {
   background-color: #202020;
   border-top: 1px solid #333;

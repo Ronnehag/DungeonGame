@@ -24,6 +24,14 @@ namespace Dungeon.Controllers
         [HttpPost]
         public IActionResult RegisterAccount(RegisterAccount model)
         {
+            if (!ModelState.IsValid)
+            {
+                return PartialView("_RegisterAccountForm", model);
+            }
+            // TODO
+            // Create user account, map it with character, map character with stats.
+            // Add Service Classes
+
             return null;
         }
 

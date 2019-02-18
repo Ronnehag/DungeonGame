@@ -1,46 +1,10 @@
-﻿@model RegisterAccount
-@{
+﻿@{
     ViewData["Title"] = "RegisterAccount";
 }
 
 
-<form>
-    <div class="row h-100">
-        <div class="col-sm-12 col-md-6 col-lg-6 mx-auto">
-            <div class="row">
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                    <div class="form-group">
-                        <label asp-for="UserName"></label>
-                        <input class="form-control form-control-sm" asp-for="UserName" maxlength="50" />
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <label asp-for="Password"></label>
-                    <input class="form-control form-control-sm" asp-for="Password" />
-                </div>
-                <div class="col">
-                    <label asp-for="ConfirmPassword"></label>
-                    <input class="form-control form-control-sm" asp-for="ConfirmPassword" />
-                </div>
-            </div>
-            <div class="row mt-3">
-                <div class="col">
-                    <label asp-for="Email"></label>
-                    <input class="form-control form-control-sm" asp-for="Email" />
-                </div>
-                <div class="col">
-                    <label asp-for="ConfirmEmail"></label>
-                    <input class="form-control form-control-sm" asp-for="ConfirmEmail" />
-                </div>
-            </div>
-                <div class="mt-3">
-        <button type="submit" class="btn btn-secondary">Register</button>
-    </div>
-        </div>
-    </div>
 
+<h1 class="text-center mb-5">Register account</h1>
 
-</form>
+<partial name="_RegisterAccountForm"/>
 
