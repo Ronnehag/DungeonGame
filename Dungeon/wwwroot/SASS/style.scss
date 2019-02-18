@@ -1,0 +1,84 @@
+﻿@import "_variables.scss";
+@import "_reset.scss";
+@import "_bootstrap.scss";
+
+
+.nav-list .list-group-item {
+    background-color: $bgBlack;
+    border-top: 1px solid $shadowGray;
+    border-left-color: $shadowGray;
+    border-right-color: $shadowGray;
+    border-radius: 0;
+    color: $fontYellow;
+
+    &.list-group-item:hover {
+        background-color: lighten($bgBlack, 5%);
+    }
+}
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    margin-left: -15rem;
+    -webkit-transition: margin .25s ease-out;
+    -moz-transition: margin .25s ease-out;
+    -o-transition: margin .25s ease-out;
+    transition: margin .25s ease-out;
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 0.875rem 1.25rem;
+    font-size: 1.2rem;
+    color: $messageGray;
+}
+
+#sidebar-wrapper .list-group {
+    width: 15rem;
+}
+
+#page-content-wrapper {
+    min-width: 100vw;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+}
+
+.sidebar-heading, .black-bg {
+    background: $bgBlack;
+}
+
+.login-container, .bg-black {
+    background: $shadowGray;
+}
+
+.main-header {
+    padding: 0.30rem 1.25rem;
+    color: $fontYellow;
+    width: 100%;
+}
+
+
+.form-control {
+    border-radius: 0;
+}
+
+
+
+@media (min-width: 768px) {
+    #sidebar-wrapper {
+        margin-left: 0;
+    }
+
+    .menu-toggler {
+        display: none;
+    }
+
+    #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        margin-left: -15rem;
+    }
+}

@@ -1,0 +1,109 @@
+/* ======================================
+*  Site variables for color schemas etc.
+*  ===================================== */
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #F5F5F5; }
+
+h1, h2, h3, h4, h5, h6, p {
+  padding: 0;
+  margin: 0; }
+
+ul {
+  padding: 0;
+  margin: 0; }
+
+li {
+  list-style: none; }
+
+/* ==========================================================
+*   Contains CSS for resetting and changing bootstrap classes
+*  ========================================================= */
+.container-fluid {
+  padding: 0;
+  margin: 0;
+  border-radius: 0; }
+
+.border-right {
+  padding: 0;
+  margin: 0;
+  border-color: #202020 !important; }
+
+.border-bottom {
+  padding: 0;
+  margin: 0;
+  border-color: #aaaaaa !important; }
+
+.btn {
+  border-radius: 0; }
+
+.btn-login {
+  background: #8B0000;
+  color: #fff; }
+  .btn-login:hover {
+    background: #720000;
+    color: #fff; }
+
+.nav-list .list-group-item {
+  background-color: #202020;
+  border-top: 1px solid #333;
+  border-left-color: #333;
+  border-right-color: #333;
+  border-radius: 0;
+  color: #E2AC1C; }
+  .nav-list .list-group-item.list-group-item:hover {
+    background-color: #2d2d2d; }
+
+#sidebar-wrapper {
+  min-height: 100vh;
+  margin-left: -15rem;
+  -webkit-transition: margin .25s ease-out;
+  -moz-transition: margin .25s ease-out;
+  -o-transition: margin .25s ease-out;
+  transition: margin .25s ease-out; }
+
+#sidebar-wrapper .sidebar-heading {
+  padding: 0.875rem 1.25rem;
+  font-size: 1.2rem;
+  color: #aaaaaa; }
+
+#sidebar-wrapper .list-group {
+  width: 15rem; }
+
+#page-content-wrapper {
+  min-width: 100vw; }
+
+#wrapper.toggled #sidebar-wrapper {
+  margin-left: 0; }
+
+.sidebar-heading, .black-bg {
+  background: #202020; }
+
+.login-container, .bg-black {
+  background: #333; }
+
+.main-header {
+  padding: 0.30rem 1.25rem;
+  color: #E2AC1C;
+  width: 100%; }
+
+.form-control {
+  border-radius: 0; }
+
+@media (min-width: 768px) {
+  #sidebar-wrapper {
+    margin-left: 0; }
+  .menu-toggler {
+    display: none; }
+  #page-content-wrapper {
+    min-width: 0;
+    width: 100%; }
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: -15rem; } }

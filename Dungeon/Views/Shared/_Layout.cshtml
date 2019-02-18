@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="RPG Dungeon Game">
+    <meta name="author" content="Fredrik Rönnehag">
+
+    <title>Dungeon Game</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+        <aside class="border-right bg-black" id="sidebar-wrapper">
+            <div class="sidebar-heading text-center"> Dungeon Game</div>
+            <div class="list-group nav-list">
+                <a href="#" class="list-group-item"><i class="fas fa-home"></i> Home</a>
+                <a href="#" class="list-group-item"><i class="fas fa-user"></i> Character</a>
+                <a href="#" class="list-group-item"><i class="fas fa-khanda"></i> Arena</a>
+                <a href="#" class="list-group-item"><i class="fas fa-dungeon"></i> Dungeon</a>
+                <a href="#" class="list-group-item"><i class="fas fa-hammer"></i> Blacksmith</a>
+                <a href="#" class="list-group-item"><i class="fas fa-beer"></i> Tavern</a>
+                <div class="container login-container">
+                    <form class="text-center mt-5">
+                        <div class="form-group">
+                            <input class="form-control" placeholder="username" />
+                        </div>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="password" />
+                        </div>
+                        <button class="btn btn-login">Log in</button>
+                        <button class="btn btn-secondary">Register</button>
+                    </form>
+                </div>
+
+            </div>
+        </aside>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <header class="black-bg main-header border-bottom">
+                <button class="btn btn-light ml-2 mt-2 menu-toggler" id="menu-toggle"><i class="fas fa-bars"></i></button>
+                <h1 class="text-center">Welcome</h1>
+            </header>
+
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+
+
+
+
+
+            </div>     <!-- /#page-content-wrapper -->
+        </div>   <!-- /#wrapper -->
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+
+        <script>
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
+</body>
+
+</html>
