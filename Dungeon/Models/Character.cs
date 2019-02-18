@@ -18,7 +18,7 @@ namespace Dungeon.Models
         public int CharacterStatsId { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [MaxLength(50)]
         [DataType(DataType.Text)]
         public string Name { get; set; }
 

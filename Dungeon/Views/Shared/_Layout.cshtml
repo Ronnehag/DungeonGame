@@ -34,16 +34,7 @@
                 <a href="#" class="list-group-item"><i class="fas fa-hammer"></i> Blacksmith</a>
                 <a href="#" class="list-group-item"><i class="fas fa-beer"></i> Tavern</a>
                 <div class="container login-container">
-                    <form class="text-center mt-5">
-                        <div class="form-group">
-                            <input class="form-control" placeholder="username" />
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" placeholder="password" />
-                        </div>
-                        <button class="btn btn-login">Log in</button>
-                        <button class="btn btn-secondary">Register</button>
-                    </form>
+                    <partial name="_LoginForm" />
                 </div>
 
             </div>
@@ -56,7 +47,7 @@
                 <h1 class="text-center">Welcome</h1>
             </header>
 
-            <div class="container-fluid">
+            <div class="container mt-5">
                 @RenderBody()
             </div>
 
@@ -64,24 +55,28 @@
 
 
 
-            </div>     <!-- /#page-content-wrapper -->
-        </div>   <!-- /#wrapper -->
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        </div>     <!-- /#page-content-wrapper -->
+    </div>   <!-- /#wrapper -->
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-        <!-- Popper JS -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 
-        <!-- Latest compiled JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+    <!-- Unobtrusive AJAX -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery-ajax-unobtrusive@3.2.6/dist/jquery.unobtrusive-ajax.min.js"></script>
 
 
-        <script>
-            $("#menu-toggle").click(function (e) {
-                e.preventDefault();
-                $("#wrapper").toggleClass("toggled");
-            });
-        </script>
+    <!-- SIDEMENU TOGGLER SCRIPT -->
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
 </body>
 
 </html>

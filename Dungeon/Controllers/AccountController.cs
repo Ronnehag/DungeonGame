@@ -18,7 +18,7 @@ namespace Dungeon.Controllers
         // Register
         public IActionResult RegisterAccount()
         {
-            return null;
+            return View();
         }
 
         [HttpPost]
