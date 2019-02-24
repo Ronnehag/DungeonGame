@@ -98,5 +98,10 @@ namespace Dungeon.Controllers
             await _signinManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
+
+        public IActionResult AccountDetails()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
