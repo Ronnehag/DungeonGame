@@ -99,9 +99,10 @@ namespace Dungeon.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+
         public IActionResult AccountDetails()
         {
-            throw new System.NotImplementedException();
+            return View();
         }
     }
 }
