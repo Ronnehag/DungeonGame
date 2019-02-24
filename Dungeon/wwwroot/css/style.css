@@ -123,7 +123,7 @@ li {
 
 /* Sidebar for logged in users
  * styling the character information and username */
-#sidebar-character {
+#sidebar-character p {
   color: #E2AC1C; }
 
 @media (min-width: 768px) {

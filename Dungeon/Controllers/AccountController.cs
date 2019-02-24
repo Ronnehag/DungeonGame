@@ -4,8 +4,11 @@ using Dungeon.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+
 namespace Dungeon.Controllers
 {
+    [Authorize]
     public class AccountController : Controller
     {
         private readonly UserManager<AppUser> _usermanager;
@@ -17,20 +20,21 @@ namespace Dungeon.Controllers
             _signinManager = signinManager;
         }
 
-        // Register View
+        [AllowAnonymous]
         public IActionResult RegisterAccount()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> RegisterAccount(RegisterAccountViewModel model)
         {
-            // If invalid model, return current view.
+            // If invalid details, return current view.
             if (!ModelState.IsValid)
             {
-                return PartialView("_RegisterAccountForm", model);
+                return View(model);
             }
 
             // Else create the Identity and store it
@@ -43,40 +47,55 @@ namespace Dungeon.Controllers
             };
             var create = await _usermanager.CreateAsync(user, model.Password);
 
-            // If user can't be created, append the errors on the model and return the view.
+            // If user can't be created, append the errors on the details and return the view.
             if (!create.Succeeded)
             {
                 foreach (var error in create.Errors)
                 {
                     ModelState.AddModelError("", error.Description);
                 }
-                return PartialView("_RegisterAccountForm", model);
+
+                return View(model);
             }
             await _signinManager.SignInAsync(user, isPersistent: false);
             return RedirectToAction("Index", "Home");
         }
 
 
-
-        // Logout
-
         // EditDetails
         // DeleteAccount
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        [AllowAnonymous]
+        public IActionResult Login()
         {
-            if (!ModelState.IsValid)
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginViewModel details)
+        {
+            if (ModelState.IsValid)
             {
-                return RedirectToAction("Index", "Home");
+                var user = await _usermanager.FindByNameAsync(details.Username);
+                if (user != null)
+                {
+                    var result = await _signinManager.PasswordSignInAsync(user, details.Password, false, false);
+                    if (result.Succeeded)
+                    {
+                        return Redirect("/");
+                    }
+                }
+                ModelState.AddModelError(nameof(LoginViewModel.Username), "Invalid username or password");
             }
+            return View(details);
+        }
 
-            var user = await _usermanager.FindByNameAsync(model.Username);
-            if (user == null) return RedirectToAction("Index", "Home");
 
-            var result = await _signinManager.PasswordSignInAsync(user, model.Password, false, false);
-
+        public async Task<IActionResult> LogOut()
+        {
+            await _signinManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
     }

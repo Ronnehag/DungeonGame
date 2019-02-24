@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 
     <!-- Custom styles for this template -->
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet" asp-append-version="true">
 </head>
 
 <body>
@@ -41,11 +41,20 @@
                 <div class="container login-container">
                     @if (SignInManager.IsSignedIn(User))
                     {
-                        <partial name="_SideBarLoggedIn"/>
+                        <partial name="_SideBarLoggedIn" />
                     }
                     else
                     {
-                        <partial name="_LoginForm"/>
+                        <section class="container mt-5 text-center">
+                            <h5>New user?</h5>
+                            <div class="row mt-4">
+                                <div class="col-12">
+                                    <a class="btn btn-login" asp-controller="Account" asp-action="Login">Log in</a>
+                                    <a class="btn btn-secondary" asp-controller="Account" asp-action="RegisterAccount">Register</a>
+                                </div>
+                            </div>
+                        </section>
+
                     }
                 </div>
 

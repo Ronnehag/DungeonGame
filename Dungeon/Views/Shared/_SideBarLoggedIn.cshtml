@@ -2,8 +2,20 @@
 @using Microsoft.AspNetCore.Identity
 @inject UserManager<AppUser> UserManager
 
-<div class="row mt-3" id="sidebar-character">
-    <div class="col-12">
-       Username: @UserManager.GetUserAsync(User).Result.UserName
+<div class="container-fluid mt-3" id="sidebar-character">
+    <div class="row">
+        <div class="col-12">
+            <p>
+                Username: @User.Identity.Name
+                <br />
+                Character: Lorem Ipsum
+            </p>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center mt-5">
+            <a asp-controller="Account" asp-action="LogOut" class="btn btn-login">Log out</a>
+        </div>
     </div>
 </div>

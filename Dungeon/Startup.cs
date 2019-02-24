@@ -37,8 +37,8 @@ namespace Dungeon
             {
                 // Default Lockout settings.
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
-                options.Lockout.MaxFailedAccessAttempts = 5;
-                options.Lockout.AllowedForNewUsers = true;
+                options.Lockout.MaxFailedAccessAttempts = 0;
+                options.Lockout.AllowedForNewUsers = false;
 
                 // Default Password settings.
                 options.Password.RequireDigit = true;
@@ -49,7 +49,7 @@ namespace Dungeon
                 options.Password.RequiredUniqueChars = 1;
 
                 // Default SignIn settings.
-                options.SignIn.RequireConfirmedEmail = true;
+                options.SignIn.RequireConfirmedEmail = false;
                 options.SignIn.RequireConfirmedPhoneNumber = false;
 
                 // Default User settings.
