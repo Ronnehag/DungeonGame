@@ -114,12 +114,17 @@ li {
   background: #333; }
 
 .main-header {
-  padding: 0.37rem 1.25rem;
+  padding: 0.38rem 1.25rem;
   color: #E2AC1C;
   width: 100%; }
 
 .form-control {
   border-radius: 0; }
+
+/* Sidebar for logged in users
+ * styling the character information and username */
+#sidebar-character {
+  color: #E2AC1C; }
 
 @media (min-width: 768px) {
   #sidebar-wrapper {

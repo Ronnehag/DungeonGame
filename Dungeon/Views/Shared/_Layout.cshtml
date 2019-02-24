@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Dungeon.Data.Identity
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<AppUser> UserManager
+@inject SignInManager<AppUser> SignInManager
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -34,7 +39,14 @@
                 <a href="#" class="list-group-item"><i class="fas fa-hammer"></i> Blacksmith</a>
                 <a href="#" class="list-group-item"><i class="fas fa-beer"></i> Tavern</a>
                 <div class="container login-container">
-                    <partial name="_LoginForm" />
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <partial name="_SideBarLoggedIn"/>
+                    }
+                    else
+                    {
+                        <partial name="_LoginForm"/>
+                    }
                 </div>
 
             </div>

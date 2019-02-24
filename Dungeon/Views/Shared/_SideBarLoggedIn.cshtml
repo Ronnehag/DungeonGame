@@ -1,0 +1,9 @@
+﻿@using Dungeon.Data.Identity
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<AppUser> UserManager
+
+<div class="row mt-3" id="sidebar-character">
+    <div class="col-12">
+       Username: @UserManager.GetUserAsync(User).Result.UserName
+    </div>
+</div>

@@ -2,6 +2,7 @@
 @import "_reset.scss";
 @import "_bootstrap.scss";
 @import "_validation.scss";
+@import "_CharacterSideBar.scss";
 
 
 .nav-list .list-group-item {
@@ -62,6 +63,13 @@
 .form-control {
     border-radius: 0;
 }
+
+/* Sidebar for logged in users
+ * styling the character information and username */
+#sidebar-character {
+    color: $fontYellow;
+}
+
 
 
 

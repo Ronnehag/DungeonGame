@@ -1,11 +1,13 @@
-﻿
-<form class="text-center mt-5">
-    <div class="form-group">
-        <input class="form-control form-control-sm" placeholder="username" />
-    </div>
-    <div class="form-group">
-        <input class="form-control form-control-sm" placeholder="password" />
-    </div>
-    <button class="btn btn-login btn-sm">Log in</button>
-    <a asp-controller="Account" asp-action="RegisterAccount" class="btn btn-secondary btn-sm">Register</a>
-</form>
+﻿@model LoginViewModel
+
+
+    <form class="text-center mt-5" method="post" asp-controller="Account" asp-action="Login">
+        <div class="form-group">
+            <input class="form-control form-control-sm" placeholder="username" asp-for="Username" />
+        </div>
+        <div class="form-group">
+            <input class="form-control form-control-sm" placeholder="password" asp-for="Password" />
+        </div>
+        <button class="btn btn-login btn-sm">Log in</button>
+        <a asp-controller="Account" asp-action="RegisterAccount" class="btn btn-secondary btn-sm">Register</a>
+    </form>

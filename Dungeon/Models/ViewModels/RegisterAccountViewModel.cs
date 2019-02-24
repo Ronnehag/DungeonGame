@@ -2,7 +2,7 @@
 
 namespace Dungeon.Models.ViewModels
 {
-    public class RegisterAccount
+    public class RegisterAccountViewModel
     {
         [Required(ErrorMessage = "Enter a username")]
         [Display(Name = "Username")]

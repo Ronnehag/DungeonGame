@@ -1,9 +1,6 @@
-﻿@model RegisterAccount
+﻿@model RegisterAccountViewModel
 
-<form method="post" data-ajax="true"
-      data-ajax-method="post"
-      data-ajax-update="#registerForm"
-      asp-controller="Account" asp-action="RegisterAccount" id="registerForm">
+<form method="post" asp-controller="Account" asp-action="RegisterAccount" id="registerForm">
 
     <div class="row h-100">
         <div class="col-sm-12 col-md-6 col-lg-6 mx-auto">

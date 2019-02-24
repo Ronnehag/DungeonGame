@@ -1,4 +1,5 @@
-﻿using Dungeon.Data.Identity;
+﻿using System.Reflection.Metadata.Ecma335;
+using Dungeon.Data.Identity;
 using Dungeon.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -16,14 +17,15 @@ namespace Dungeon.Controllers
             _signinManager = signinManager;
         }
 
-        // Register
+        // Register View
         public IActionResult RegisterAccount()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> RegisterAccount(RegisterAccount model)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RegisterAccount(RegisterAccountViewModel model)
         {
             // If invalid model, return current view.
             if (!ModelState.IsValid)
@@ -56,11 +58,26 @@ namespace Dungeon.Controllers
 
 
 
-
-        // Login
         // Logout
 
         // EditDetails
         // DeleteAccount
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            var user = await _usermanager.FindByNameAsync(model.Username);
+            if (user == null) return RedirectToAction("Index", "Home");
+
+            var result = await _signinManager.PasswordSignInAsync(user, model.Password, false, false);
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
