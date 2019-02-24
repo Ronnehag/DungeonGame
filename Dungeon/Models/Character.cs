@@ -10,7 +10,6 @@ namespace Dungeon.Models
         [Required]
         public int CharacterId { get; set; }
 
-        [ForeignKey("User")]
         [Required]
         public string UserId { get; set; }
 
@@ -22,6 +21,7 @@ namespace Dungeon.Models
         [DataType(DataType.Text)]
         public string Name { get; set; }
 
+        [ForeignKey("UserId")]
         public AppUser User { get; set; }
 
         [ForeignKey("CharacterStatsId")]

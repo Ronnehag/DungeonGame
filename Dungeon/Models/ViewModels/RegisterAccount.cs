@@ -20,12 +20,12 @@ namespace Dungeon.Models.ViewModels
         public string ConfirmPassword { get; set; }
 
         [Required(ErrorMessage = "Enter an email")]
-        //[DataType(DataType.EmailAddress)]
+        [DataType(DataType.EmailAddress)]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Confirm your email")]
-        //[DataType(DataType.EmailAddress)]
+        [DataType(DataType.EmailAddress)]
         [Display(Name = "Confirm email")]
         [Compare("Email", ErrorMessage = "Email doesn't match")]
         public string ConfirmEmail { get; set; }

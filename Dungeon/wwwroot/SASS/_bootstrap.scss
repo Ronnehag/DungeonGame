@@ -35,3 +35,12 @@
         color: #fff;
     }
 }
+.btn-toggler {
+    background: $shadowGray;
+    border: $messageGray;
+
+    &:hover {
+        background: lighten($shadowGray, 10%);
+        color: #fff;
+    }
+}

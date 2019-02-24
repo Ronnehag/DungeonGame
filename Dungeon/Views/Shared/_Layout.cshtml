@@ -43,9 +43,9 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <header class="black-bg main-header border-bottom">
-                <button class="btn btn-light ml-2 mt-2 menu-toggler" id="menu-toggle"><i class="fas fa-bars"></i></button>
-                <h1 class="text-center">Welcome</h1>
+                <a class="btn btn-toggler ml-2 mt-1 mb-1 menu-toggler" id="menu-toggle"><i class="fas fa-bars"></i></a>
             </header>
+
 
             <div class="container mt-5">
                 @RenderBody()
@@ -64,7 +64,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
 
     <!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
 
     <!-- Unobtrusive AJAX -->
     <script src="https://cdn.jsdelivr.net/npm/jquery-ajax-unobtrusive@3.2.6/dist/jquery.unobtrusive-ajax.min.js"></script>
@@ -73,7 +73,6 @@
     <!-- SIDEMENU TOGGLER SCRIPT -->
     <script>
         $("#menu-toggle").click(function (e) {
-            e.preventDefault();
             $("#wrapper").toggleClass("toggled");
         });
     </script>

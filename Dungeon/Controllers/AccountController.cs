@@ -2,6 +2,7 @@
 using Dungeon.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 namespace Dungeon.Controllers
 {
     public class AccountController : Controller
@@ -22,17 +23,35 @@ namespace Dungeon.Controllers
         }
 
         [HttpPost]
-        public IActionResult RegisterAccount(RegisterAccount model)
+        public async Task<IActionResult> RegisterAccount(RegisterAccount model)
         {
+            // If invalid model, return current view.
             if (!ModelState.IsValid)
             {
                 return PartialView("_RegisterAccountForm", model);
             }
-            // TODO
-            // Create user account, map it with character, map character with stats.
-            // Add Service Classes
 
-            return null;
+            // Else create the Identity and store it
+            var user = new AppUser
+            {
+                Email = model.Email,
+                UserName = model.UserName,
+                NormalizedEmail = model.Email.ToLower(),
+                NormalizedUserName = model.UserName.ToLower()
+            };
+            var create = await _usermanager.CreateAsync(user, model.Password);
+
+            // If user can't be created, append the errors on the model and return the view.
+            if (!create.Succeeded)
+            {
+                foreach (var error in create.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return PartialView("_RegisterAccountForm", model);
+            }
+            await _signinManager.SignInAsync(user, isPersistent: false);
+            return RedirectToAction("Index", "Home");
         }
 
 
@@ -40,7 +59,7 @@ namespace Dungeon.Controllers
 
         // Login
         // Logout
-        
+
         // EditDetails
         // DeleteAccount
     }

@@ -51,6 +51,13 @@ li {
     background: #720000;
     color: #fff; }
 
+.btn-toggler {
+  background: #333;
+  border: #aaaaaa; }
+  .btn-toggler:hover {
+    background: #4d4d4d;
+    color: #fff; }
+
 /* ============================================
 *  This CSS controls the input fields
 *  by displaying red text for validation errors 
@@ -107,7 +114,7 @@ li {
   background: #333; }
 
 .main-header {
-  padding: 0.30rem 1.25rem;
+  padding: 0.37rem 1.25rem;
   color: #E2AC1C;
   width: 100%; }
 
@@ -118,7 +125,7 @@ li {
   #sidebar-wrapper {
     margin-left: 0; }
   .menu-toggler {
-    display: none; }
+    visibility: hidden; }
   #page-content-wrapper {
     min-width: 0;
     width: 100%; }

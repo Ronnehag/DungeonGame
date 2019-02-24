@@ -53,7 +53,7 @@
 }
 
 .main-header {
-    padding: 0.30rem 1.25rem;
+    padding: 0.38rem 1.25rem;
     color: $fontYellow;
     width: 100%;
 }
@@ -65,13 +65,16 @@
 
 
 
+
+
+
 @media (min-width: 768px) {
     #sidebar-wrapper {
         margin-left: 0;
     }
 
     .menu-toggler {
-        display: none;
+        visibility: hidden;
     }
 
     #page-content-wrapper {
