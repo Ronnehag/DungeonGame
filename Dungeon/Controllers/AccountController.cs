@@ -61,6 +61,7 @@ namespace Dungeon.Controllers
         }
 
 
+
         // EditDetails
         // DeleteAccount
 
@@ -148,6 +149,7 @@ namespace Dungeon.Controllers
                         else
                         {
                             details.CurrentEmail = details.NewEmail;
+                            return RedirectToAction("AccountDetails");
                         }
                     }
                 }

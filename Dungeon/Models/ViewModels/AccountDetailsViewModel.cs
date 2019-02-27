@@ -19,7 +19,7 @@ namespace Dungeon.Models.ViewModels
         [DataType(DataType.Password)]
         public string NewPassword { get; set; }
 
-        [Display(Name = "Confirm new password")]
+        [Display(Name = "Confirm password")]
         [DataType(DataType.Password)]
         [Compare("NewPassword")]
         public string ConfirmNewPassword { get; set; }

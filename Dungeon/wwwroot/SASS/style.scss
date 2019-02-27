@@ -2,6 +2,7 @@
 @import "_reset.scss";
 @import "_bootstrap.scss";
 @import "_validation.scss";
+@import "_mixins.scss";
 
 
 .nav-list .list-group-item {
@@ -74,6 +75,7 @@
         color: $fontYellow;
     }
 }
+
 
 
 

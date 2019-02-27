@@ -6,54 +6,59 @@
     ViewData["Title"] = "AccountDetails";
 }
 
-<div class="container-fluid mt-5">
-   
-    <h1>AccountDetails</h1>
-    
-    <form asp-controller="Account" asp-action="AccountDetails" method="post" class="mt-5">
+<div class="container mt-5">
+
+    <h1 class="text-center">AccountDetails</h1>
+
+    <form asp-controller="Account" asp-action="AccountDetails" method="post" class="mt-5" id="editAccountForm">
         <div class="row">
-            <div class="col-6 col-sm-4 col-md-4 col-lg-4 form-group">
+            <div class="col-12 col-sm-6  offset-md-2 offset-lg-2 col-md-4 col-lg-4 form-group">
                 <label>Username</label>
-                <input class="form-control" asp-for="UserName" readonly/>
+                <input class="form-control" asp-for="UserName" readonly />
             </div>
         </div>
-        
+
         <div class="row">
-            <div class="col-6 col-sm-4 col-md-4 col-lg-4 form-group">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-4 form-group ml-auto">
                 <label asp-for="CurrentEmail"></label>
-                <input class="form-control" asp-for="CurrentEmail" readonly/>
+                <input class="form-control" asp-for="CurrentEmail" readonly />
             </div>
-            <div class="col-6 col-sm-4 col-md-4 col-lg-4 form-group">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-4 form-group mr-auto">
                 <label asp-for="NewEmail"></label>
                 <input class="form-control" asp-for="NewEmail" />
                 <small><span asp-validation-for="NewEmail"></span></small>
             </div>
         </div>
-        
+
         <div class="row">
-            <div class="col-6 col-sm-4 col-md-4 col-lg-4 form-group">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-4 form-group ml-auto">
                 <label asp-for="NewPassword"></label>
-                <input class="form-control" asp-for="NewPassword"/>
+                <input class="form-control" asp-for="NewPassword" />
                 <small><span asp-validation-for="NewPassword"></span></small>
 
             </div>
-            <div class="col-6 col-sm-4 col-md-4 col-lg-4 form-group">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-4 form-group mr-auto">
                 <label asp-for="ConfirmNewPassword"></label>
-                <input class="form-control" asp-for="ConfirmNewPassword"/>
+                <input class="form-control" asp-for="ConfirmNewPassword" />
                 <small><span asp-validation-for="ConfirmNewPassword"></span></small>
             </div>
         </div>
-        
+
         <div class="row">
-            <div class="col-6 col-sm-4 col-md-4 col-lg-4 form-group">
+            <div class="col-12 col-sm-12 offset-md-2 offset-lg-2 col-md-4 col-lg-4 form-group">
                 <label asp-for="CurrentPassword"></label>
-                <input class="form-control" asp-for="CurrentPassword"/>
+                <input class="form-control" asp-for="CurrentPassword" />
                 <small><span asp-validation-for="CurrentPassword"></span></small>
             </div>
         </div>
-        
-        <button class="btn btn-primary" type="submit">Confirm</button>
-
+        <div class="row mb-5">
+            <div class="col-6 col-sm-6 offset-lg-2 col-md-6 col-lg-4">
+                <button class="btn btn-primary" type="submit">Confirm</button>
+            </div>
+            <div class="col-6 col-sm-6 offset-lg-2 col-md-4 col-lg-4">
+                <a class="btn btn-danger" href="#!">Delete account</a>
+            </div>
+        </div>
     </form>
 </div>
 
