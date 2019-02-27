@@ -113,6 +113,9 @@ li {
 .login-container, .bg-black {
   background: #333; }
 
+.login-container {
+  color: #E2AC1C; }
+
 .main-header {
   padding: 0.38rem 1.25rem;
   color: #E2AC1C;

@@ -1,10 +1,9 @@
-﻿using System.Reflection.Metadata.Ecma335;
-using Dungeon.Data.Identity;
+﻿using Dungeon.Data.Identity;
 using Dungeon.Models.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Dungeon.Controllers
 {
@@ -99,10 +98,53 @@ namespace Dungeon.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-
-        public IActionResult AccountDetails()
+        [HttpGet]
+        public async Task<IActionResult> AccountDetails()
         {
-            return View();
+            var model = new AccountDetailsViewModel();
+            var user = await _usermanager.GetUserAsync(User);
+            if (user == null) Challenge();
+
+            model.UserName = user.UserName;
+            model.CurrentEmail = user.Email;
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AccountDetails(AccountDetailsViewModel details)
+        {
+            var user = await _usermanager.GetUserAsync(User);
+            if (user == null) Challenge();
+            if (ModelState.IsValid)
+            {
+                // check if current password is correct
+                var passwordCheck = await _usermanager.CheckPasswordAsync(user, details.CurrentPassword);
+                if (passwordCheck)
+                {
+                    // Check if password field is not empty, then change password.
+                    if (!string.IsNullOrEmpty(details.NewPassword) && !string.IsNullOrEmpty(details.ConfirmNewPassword))
+                    {
+                        var changePassword = await
+                            _usermanager.ChangePasswordAsync(user, details.CurrentPassword, details.NewPassword);
+                        if (!changePassword.Succeeded)
+                        {
+                            // Append errors to model
+                        }
+                    }
+
+                    // Check if mail is not empty, then change email
+                    if (!string.IsNullOrWhiteSpace(details.NewEmail))
+                    {
+                        var changeEmail = await _usermanager.ChangeEmailAsync(user, user.Email, details.NewEmail);
+                        if (!changeEmail.Succeeded)
+                        {
+                            // Append errors to model
+                        }
+                    }
+                }
+            }
+            return View(details);
         }
     }
 }
