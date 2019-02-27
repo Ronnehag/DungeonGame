@@ -129,19 +129,30 @@ namespace Dungeon.Controllers
                             _usermanager.ChangePasswordAsync(user, details.CurrentPassword, details.NewPassword);
                         if (!changePassword.Succeeded)
                         {
-                            // Append errors to model
+                            // Append Errors
+                            ModelState.AddModelError(nameof(details.NewPassword), "Password change failed");
+                            ModelState.AddModelError(nameof(details.ConfirmNewPassword), "");
                         }
                     }
-
                     // Check if mail is not empty, then change email
                     if (!string.IsNullOrWhiteSpace(details.NewEmail))
                     {
-                        var changeEmail = await _usermanager.ChangeEmailAsync(user, user.Email, details.NewEmail);
+                        var token = await _usermanager.GenerateChangeEmailTokenAsync(user, details.NewEmail);
+                        var changeEmail = await _usermanager.ChangeEmailAsync(user, details.NewEmail, token);
                         if (!changeEmail.Succeeded)
                         {
                             // Append errors to model
+                            ModelState.AddModelError(nameof(details.NewEmail), "Changing email failed");
+                        }
+                        else
+                        {
+                            details.CurrentEmail = details.NewEmail;
                         }
                     }
+                }
+                else
+                {
+                    ModelState.AddModelError(nameof(details.CurrentPassword), "Invalid password");
                 }
             }
             return View(details);
