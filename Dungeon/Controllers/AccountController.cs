@@ -87,6 +87,7 @@ namespace Dungeon.Controllers
                     }
                 }
                 ModelState.AddModelError(nameof(LoginViewModel.Username), "Invalid username or password");
+                ModelState.AddModelError(nameof(LoginViewModel.Password), "");
             }
             return View(details);
         }
@@ -130,8 +131,8 @@ namespace Dungeon.Controllers
                         if (!changePassword.Succeeded)
                         {
                             // Append Errors
-                            ModelState.AddModelError(nameof(details.NewPassword), "Password change failed");
-                            ModelState.AddModelError(nameof(details.ConfirmNewPassword), "");
+                            ModelState.AddModelError(nameof(AccountDetailsViewModel.NewPassword), "Password change failed");
+                            ModelState.AddModelError(nameof(AccountDetailsViewModel.ConfirmNewPassword), "");
                         }
                     }
                     // Check if mail is not empty, then change email
@@ -142,7 +143,7 @@ namespace Dungeon.Controllers
                         if (!changeEmail.Succeeded)
                         {
                             // Append errors to model
-                            ModelState.AddModelError(nameof(details.NewEmail), "Changing email failed");
+                            ModelState.AddModelError(nameof(AccountDetailsViewModel.NewEmail), "Changing email failed");
                         }
                         else
                         {
@@ -152,7 +153,7 @@ namespace Dungeon.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(nameof(details.CurrentPassword), "Invalid password");
+                    ModelState.AddModelError(nameof(AccountDetailsViewModel.CurrentPassword), "Invalid password");
                 }
             }
             return View(details);
