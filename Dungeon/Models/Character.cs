@@ -21,6 +21,16 @@ namespace Dungeon.Models
         [DataType(DataType.Text)]
         public string Name { get; set; }
 
+        [Required]
+        [MaxLength(50)]
+        [DataType(DataType.Text)]
+        public string Race { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        [DataType(DataType.Text)]
+        public string Gender { get; set; }
+
         [ForeignKey("UserId")]
         public AppUser User { get; set; }
 
