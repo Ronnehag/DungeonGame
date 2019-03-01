@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using Dungeon.Services;
+using Dungeon.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.Facebook;
 
 namespace Dungeon
@@ -33,6 +35,8 @@ namespace Dungeon
             services.AddIdentity<AppUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
+
+            services.AddScoped<ICharacterService, CharacterService>();
 
             services.Configure<IdentityOptions>(options =>
             {
