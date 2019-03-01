@@ -41,7 +41,8 @@ namespace Dungeon.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                // TODO, store character link to User
+                // Data is currently working.
             }
 
             throw new NotImplementedException();

@@ -1,14 +1,34 @@
-﻿@{
+﻿@using GameLogic.Enums
+@model CreateCharacterViewModel
+
+@{
     ViewData["Title"] = "CreateCharacter";
 }
 
 <div class="container">
     <h1>CreateCharacter</h1>
     <form asp-controller="Character" asp-action="CreateCharacter" method="post">
-        
-        
-        
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input class="form-control" asp-for="Name" />
+            <small><span asp-validation-for="Name"></span></small>
+        </div>
 
+        <div class="form-group">
+            <label asp-for="Races"></label>
+            <select asp-for="Race" asp-items="@Model.Races"></select>
+            <small><span asp-validation-for="Race"></span></small>
+        </div>
+        
+        @foreach (var gender in Enum.GetValues(typeof(Enums.Gender)))
+        {
+            <div class="form-check-inline">
+                <label>
+                    <input type="radio" class="form-check-input" value="@gender" asp-for="Gender"> @gender.ToString()
+                </label>
+            </div>
+        }
+        <button type="submit" class="btn btn-primary">Confirm</button>
     </form>
 
 

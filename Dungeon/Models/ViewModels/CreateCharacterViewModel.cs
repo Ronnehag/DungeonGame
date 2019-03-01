@@ -10,7 +10,8 @@ namespace Dungeon.Models.ViewModels
     public class CreateCharacterViewModel
     {
         public string Name { get; set; }
-        public SelectList Race { get; set; }
+        public SelectList Races { get; set; }
+        public Enums.Race Race { get; set; }
         public Enums.Gender Gender { get; set; }
 
         public void FillRaceList()
@@ -21,7 +22,7 @@ namespace Dungeon.Models.ViewModels
                     ID = (int) r,
                     Name = r.ToString()
                 };
-            Race = new SelectList(races, "ID", "Name");
+            Races = new SelectList(races, "ID", "Name");
         }
     }
 }
